@@ -10,9 +10,10 @@
 using namespace std;
 using namespace ariel;
 
-Node* OrgChart:: findND(Node* nd, string const & str)
+Node*  OrgChart:: findND(Node* &nd, string const & str)
 {
     if (nd->_name == str){
+        cout<<"found: "<<nd<<" "<<*nd<<" ";
         return nd;
     }
     if (nd == nullptr){
@@ -28,10 +29,14 @@ Node* OrgChart:: findND(Node* nd, string const & str)
             break;
         }        
     }
+    cout<<"found: "<<curr_find;//<<" "<<*curr_find<<" ";
+    if(curr_find!=nullptr){
+        cout<<" "<<*curr_find<<" ";
+    }
     return curr_find;
     
 }
-OrgChart OrgChart:: add_root(string const & str)
+OrgChart& OrgChart:: add_root(string const & str)
 {
     if (this->_root == nullptr){
         this->_root = new Node(str,0);
@@ -45,13 +50,15 @@ OrgChart OrgChart:: add_root(string const & str)
         // this->_root = tmp;
         this->_root->_name = str;
     }
+    cout<<"root: "<<this->_root<<" "<<*(this->_root)<<endl;
     return *this;
 }
-OrgChart OrgChart:: add_sub(string const & parent,string const & child)
+OrgChart& OrgChart:: add_sub(string const & parent,string const & child)
 {
     if (this->_root == nullptr){
         throw invalid_argument("root is null!");
     }
+    cout<<endl<<"before found "<<this->_root<<endl;
     Node *parent_nd = findND(this->_root,parent);
     if (parent_nd == nullptr){
         throw invalid_argument("this parent: "+ parent +" is not a member in orgchart");
@@ -66,6 +73,8 @@ OrgChart OrgChart:: add_sub(string const & parent,string const & child)
     child_nd = new Node(child,parent_nd->_level+1);
     parent_nd->_children.push_back(child_nd);    
     this->_size++;
+    cout<<"parent: "<<parent_nd<<" " <<*parent_nd<<endl;//<<" child: "<<this->_root<<endl;
+
     return *this;
 }
 
