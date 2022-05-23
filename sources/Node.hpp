@@ -11,39 +11,39 @@ class Node{
     vector<Node*> _children;
 
     Node(){this->_name = "null";}
-    Node(Node &nd){
-        this->_level = nd._level;
-        this->_name = nd._name;
-        for (size_t i = 0; i < nd._children.size(); i++)
-        {
-            Node *new_nd = new Node(*(nd._children.at(i)));
-            this->_children.push_back(new_nd);
-        }
+    // Node(Node &nd){
+    //     this->_level = nd._level;
+    //     this->_name = nd._name;
+    //     for (size_t i = 0; i < nd._children.size(); i++)
+    //     {
+    //         Node *new_nd = new Node(*(nd._children.at(i)));
+    //         this->_children.push_back(new_nd);
+    //     }
         
-    }
-    Node &operator=(const Node & other) 
-    {
-        this->_level = other._level;
-        this->_name = other._name;
-        for (size_t i = 0; i < other._children.size(); i++)
-        {
-            Node *new_nd = new Node(*(other._children.at(i)));
-            this->_children.push_back(new_nd);
-        }
-        return *this;
-    }
-    ~Node()
-    {
-        // cout<< *this<<endl;
-        // cout<< "call des"<<endl;
-        for (size_t i = 0; i < this->_children.size(); i++)
-        {
-            if (this->_children.at(i) != nullptr){
-                delete this->_children.at(i);
-            }
-        }
+    // }
+    // Node &operator=(const Node & other) 
+    // {
+    //     this->_level = other._level;
+    //     this->_name = other._name;
+    //     for (size_t i = 0; i < other._children.size(); i++)
+    //     {
+    //         Node *new_nd = new Node(*(other._children.at(i)));
+    //         this->_children.push_back(new_nd);
+    //     }
+    //     return *this;
+    // }
+    // ~Node()
+    // {
+    //     // cout<< *this<<endl;
+    //     // cout<< "call des"<<endl;
+    //     for (size_t i = 0; i < this->_children.size(); i++)
+    //     {
+    //         if (this->_children.at(i) != nullptr){
+    //             delete this->_children.at(i);
+    //         }
+    //     }
         
-    }
+    // }
     Node(string const & name){this->_name = name;}
     Node(string const & name, int const & level){
         this->_name = name;

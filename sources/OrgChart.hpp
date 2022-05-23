@@ -14,11 +14,11 @@ namespace ariel
         public:
         Node* _root = nullptr;
         size_t _size = 0;
-        OrgChart(){}
-        OrgChart(OrgChart const &other)
-        {
-            this->_root = new Node(*(other._root));
-        }
+        // OrgChart(){}
+        // OrgChart(OrgChart const &other)
+        // {
+        //     this->_root = new Node(*(other._root));
+        // }
 
         static Node* findND(Node* nd, string const & str);
         OrgChart add_root(string const & str);
@@ -96,20 +96,20 @@ namespace ariel
         OrgChart:: Iterator end()const;
 
 
-        OrgChart &operator=(const OrgChart & other) 
-        {
-            this->_root = new Node(*(other._root));
-            return *this;
-        }
-        ~OrgChart(){
-            if (this->_root != nullptr){
-                cout<< "call destructor!"<<endl;
-                cout<<*(this->_root)<<endl;
-                cout<<this->_root<<endl;
-                cout<< "end of destructor!"<<endl;
-                delete (this->_root);
-            }
-        }
+        // OrgChart &operator=(const OrgChart & other) 
+        // {
+        //     this->_root = new Node(*(other._root));
+        //     return *this;
+        // }
+        // ~OrgChart(){
+        //     if (this->_root != nullptr){
+        //         cout<< "call destructor!"<<endl;
+        //         cout<<*(this->_root)<<endl;
+        //         cout<<this->_root<<endl;
+        //         cout<< "end of destructor!"<<endl;
+        //         delete (this->_root);
+        //     }
+        // }
     };
    
 }
